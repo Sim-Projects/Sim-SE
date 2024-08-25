@@ -55,7 +55,7 @@ export default function Lesson({ params }: {
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbLink href={"/chapter/"+chapterId}>{chapter.name}</BreadcrumbLink>
+              <BreadcrumbLink href={"/course/"+courseId+"/chapter/"+chapterId}>{chapter.name}</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
