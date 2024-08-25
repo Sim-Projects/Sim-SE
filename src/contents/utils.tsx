@@ -59,9 +59,8 @@ export const Quiz = ({ question, choices, correctAnswer, explanations }: {
           <div className="space-y-2 py-2">
             <ol className="list-decimal list-inside space-y-1">
               {choices.map((choice, index) => (
-                <li>
+                <li key={index}>
                   <Button
-                    key={index}
                     onClick={() => handleAnswerClick(choice)}
                     className={`${showExplanation && choice === correctAnswer
                       ? "bg-green-800"
