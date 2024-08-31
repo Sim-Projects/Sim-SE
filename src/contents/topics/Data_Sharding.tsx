@@ -4,6 +4,7 @@ import React, { useState } from "react";
 // import { Heading, Paragraph, Simulation, Quiz, CodeBlock } from "@/contents/utils";
 import { Button } from "@/components/ui/button";
 import { Heading, Paragraph, Simulation, Quiz, CodeBlock } from "@/contents/utils";
+import SectionPagination from "@/utils/Pagination";
 
 const Shard = ({ data, activeIndex }: {
     data: number[];
@@ -90,26 +91,38 @@ const ShardingSimulation = () => {
     );
 };
 
-const DataShardingLesson = () => (
-    <div className="space-y-6">
-        <Heading>Understanding Data Sharding in System Design</Heading>
-        <Paragraph>
-            In this lesson, you&apos;ll learn about data sharding and how it improves the performance of distributed databases.
-        </Paragraph>
-        <ShardingSimulation />
-        <Quiz
-            question="What is the primary benefit of sharding?"
-            choices={["Scalability", "Redundancy", "Speed"]}
-            correctAnswer="Scalability"
-            explanations={[
-                "Sharding primarily improves scalability by distributing data across multiple databases, allowing for more efficient data management and query performance."
-            ]}
-        />
-        <CodeBlock>
-            <div>shardSize = Math.ceil(totalNodes / shards);</div>
-            <div>shardSize = Math.ceil(totalNodes / shards);</div>
-        </CodeBlock>
-    </div>
+const DataShardingTopic = () => (
+    <SectionPagination>
+        <section>
+            <Heading>Understanding Data Sharding in System Design</Heading>
+            <Paragraph>
+                In this lesson, you&apos;ll learn about data sharding and how it improves the performance of distributed databases.
+            </Paragraph>
+        </section>
+        <section>
+            <ShardingSimulation />
+        </section>
+        <section>
+            <Quiz
+                question="What is the primary benefit of sharding?"
+                choices={["Scalability", "Redundancy", "Speed"]}
+                correctAnswer="Scalability"
+                explanations={[
+                    "Sharding primarily improves scalability by distributing data across multiple databases, allowing for more efficient data management and query performance."
+                ]}
+            />
+        </section>
+        <section>
+            <Heading>Sharding Techniques Sample Lesson</Heading>
+            <Paragraph>
+                In this lesson, you&apos;ll learn about data sharding and how it improves the performance of distributed databases.
+            </Paragraph>
+            <CodeBlock>
+                <div>shardSize = Math.ceil(totalNodes / shards);</div>
+                <div>shardSize = Math.ceil(totalNodes / shards);</div>
+            </CodeBlock>
+        </section>
+    </SectionPagination>
 );
 
-export default DataShardingLesson;
+export default DataShardingTopic;
