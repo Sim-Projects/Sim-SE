@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 // import { Heading, Paragraph, Simulation, Quiz, CodeBlock } from "@/contents/utils";
 import { Button } from "@/components/ui/button";
-import { Heading, Paragraph, Simulation, Quiz, CodeBlock } from "@/contents/utils";
+import { Heading, Paragraph, Simulation, Quiz, CodeBlock, DidYouKnow, OrderedList, UnorderedList } from "@/contents/utils";
 import SectionPagination from "@/utils/Pagination";
 
 const Shard = ({ data, activeIndex }: {
@@ -97,7 +97,21 @@ const DataShardingTopic = () => (
             <Heading>Understanding Data Sharding in System Design</Heading>
             <Paragraph>
                 In this lesson, you&apos;ll learn about data sharding and how it improves the performance of distributed databases.
+                <OrderedList>
+                    <li>Scalability</li>
+                    <li>Redundancy</li>
+                    <li>Speed</li>
+                </OrderedList>
+                <UnorderedList>
+                    <li>Scalability</li>
+                    <li>Redundancy</li>
+                    <li>Speed</li>
+                </UnorderedList>
             </Paragraph>
+            <DidYouKnow
+                heading="Did you know?"
+                text="Sharding improves scalability by distributing data across multiple databases, allowing for more efficient data management and query performance."
+            />
         </section>
         <section>
             <ShardingSimulation />
@@ -121,6 +135,88 @@ const DataShardingTopic = () => (
                 <div>shardSize = Math.ceil(totalNodes / shards);</div>
                 <div>shardSize = Math.ceil(totalNodes / shards);</div>
             </CodeBlock>
+        </section>
+        <section>
+            <Quiz
+                question="What is the primary benefit of sharding?"
+                choices={["Scalability", "Redundancy", "Speed"]}
+                correctAnswer="Scalability"
+                explanations={[
+                    "Sharding primarily improves scalability by distributing data across multiple databases, allowing for more efficient data management and query performance."
+                ]}
+            />
+            <Quiz
+                question="What is the primary benefit of sharding?"
+                choices={["Scalability", "Redundancy", "Speed"]}
+                correctAnswer="Scalability"
+                explanations={[
+                    "Sharding primarily improves scalability by distributing data across multiple databases, allowing for more efficient data management and query performance."
+                ]}
+            />
+            <Quiz
+                question="What is the primary benefit of sharding?"
+                choices={["Scalability", "Redundancy", "Speed"]}
+                correctAnswer="Scalability"
+                explanations={[
+                    "Sharding primarily improves scalability by distributing data across multiple databases, allowing for more efficient data management and query performance."
+                ]}
+            />
+            <Quiz
+                question="What is the primary benefit of sharding?"
+                choices={["Scalability", "Redundancy", "Speed"]}
+                correctAnswer="Scalability"
+                explanations={[
+                    "Sharding primarily improves scalability by distributing data across multiple databases, allowing for more efficient data management and query performance."
+                ]}
+            />
+            <Quiz
+                question="What is the primary benefit of sharding?"
+                choices={["Scalability", "Redundancy", "Speed"]}
+                correctAnswer="Scalability"
+                explanations={[
+                    "Sharding primarily improves scalability by distributing data across multiple databases, allowing for more efficient data management and query performance."
+                ]}
+            />
+            <Quiz
+                question="What is the primary benefit of sharding?"
+                choices={["Scalability", "Redundancy", "Speed"]}
+                correctAnswer="Scalability"
+                explanations={[
+                    "Sharding primarily improves scalability by distributing data across multiple databases, allowing for more efficient data management and query performance."
+                ]}
+            />
+            <Quiz
+                question="What is the primary benefit of sharding?"
+                choices={["Scalability", "Redundancy", "Speed"]}
+                correctAnswer="Scalability"
+                explanations={[
+                    "Sharding primarily improves scalability by distributing data across multiple databases, allowing for more efficient data management and query performance."
+                ]}
+            />
+            <Quiz
+                question="What is the primary benefit of sharding?"
+                choices={["Scalability", "Redundancy", "Speed"]}
+                correctAnswer="Scalability"
+                explanations={[
+                    "Sharding primarily improves scalability by distributing data across multiple databases, allowing for more efficient data management and query performance."
+                ]}
+            />
+            <Quiz
+                question="What is the primary benefit of sharding?"
+                choices={["Scalability", "Redundancy", "Speed"]}
+                correctAnswer="Scalability"
+                explanations={[
+                    "Sharding primarily improves scalability by distributing data across multiple databases, allowing for more efficient data management and query performance."
+                ]}
+            />
+            <Quiz
+                question="What is the primary benefit of sharding?"
+                choices={["Scalability", "Redundancy", "Speed"]}
+                correctAnswer="Scalability"
+                explanations={[
+                    "Sharding primarily improves scalability by distributing data across multiple databases, allowing for more efficient data management and query performance."
+                ]}
+            />
         </section>
     </SectionPagination>
 );

@@ -6,7 +6,7 @@ import {
   AlertDescription,
   AlertTitle,
 } from "@/components/ui/alert"
-import { CheckCheck, X, CircleHelp } from "lucide-react"
+import { CheckCheck, X, CircleHelp, Lightbulb } from "lucide-react"
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
 import { Fira_Code } from "next/font/google";
 
@@ -15,19 +15,31 @@ const firacode = Fira_Code({ subsets: ["latin"] });
 export const Heading = ({ children }: {
   children: React.ReactNode
 }) => (
-  <h2 className="text-1xl font-bold">{children}</h2>
+  <h2 className="text-2xl font-bold">{children}</h2>
 );
 
 export const Paragraph = ({ children }: {
   children: React.ReactNode
 }) => (
-  <p className="text-base leading-relaxed">{children}</p>
+  <div className="text-base leading-relaxed mt-5">{children}</div>
+);
+
+export const OrderedList = ({ children }: {
+  children: React.ReactNode
+}) => (
+  <ol className="list-decimal list-inside mt-5">{children}</ol>
+);
+
+export const UnorderedList = ({ children }: {
+  children: React.ReactNode
+}) => (
+  <ul className="list-disc list-inside mt-5">{children}</ul>
 );
 
 export const Simulation = ({ children }: {
   children: React.ReactNode
 }) => (
-  <div className="p-4 border rounded-lg bg-gray-100">{children}</div>
+  <div className="p-4 border rounded-lg bg-gray-100 mt-5">{children}</div>
 );
 
 export const Quiz = ({ question, choices, correctAnswer, explanations }: {
@@ -47,7 +59,7 @@ export const Quiz = ({ question, choices, correctAnswer, explanations }: {
   const isCorrect = selectedAnswer === correctAnswer;
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 mt-5">
       <Card>
         <CardHeader>
           <CardTitle className="text-1xl font-bold">
@@ -104,7 +116,7 @@ export const Quiz = ({ question, choices, correctAnswer, explanations }: {
 export const CodeBlock = ({ children }: {
   children: React.ReactNode
 }) => (
-  <div className={"p-4 bg-gray-800 text-white rounded-md text-wrap"+firacode.className}>
+  <div className={"mt-5 p-4 bg-gray-800 text-white rounded-md text-wrap" + firacode.className}>
     {children}
   </div>
 );
@@ -113,3 +125,19 @@ export const ImageBlock = ({ src, alt }: {
   src: string;
   alt: string;
 }) => <Image src={src} alt={alt} width={300} height={300} />;
+
+export const DidYouKnow = ({ heading, text }: {
+  heading: string;
+  text: string;
+}) => (
+  <div className="space-y-2 mt-5">
+    <Card>
+      <CardHeader>
+        <CardTitle className="text-1xl font-bold">
+          <Lightbulb className="h-8 w-4 inline-block" /> {heading}
+        </CardTitle>
+      </CardHeader>
+      <CardContent>{text}</CardContent>
+    </Card>
+  </div>
+)

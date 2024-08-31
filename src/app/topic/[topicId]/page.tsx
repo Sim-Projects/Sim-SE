@@ -29,8 +29,8 @@ export default function topic({ params }: { params: { topicId: string } }) {
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-        <h1 className="text-2xl font-bold mb-4">{topic.title}</h1>
-        <div>
+        {/* <h1 className="text-2xl font-bold mb-4">{topic.title}</h1> */}
+        <div className="md:mx-auto md:max-w-3xl px-8">
           {lazyComponentToReactNode(topic.component)}
         </div>
       </div>

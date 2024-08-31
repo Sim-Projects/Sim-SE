@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect, ReactNode } from 'react';
 import { Button } from "@/components/ui/button"
 import { ChevronRight } from "lucide-react"
+import { Progress } from "@/components/ui/progress"
 
 interface SectionPaginationProps {
   children: ReactNode[];
@@ -9,6 +10,7 @@ interface SectionPaginationProps {
 const SectionPagination: React.FC<SectionPaginationProps> = ({ children }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [progress, setProgress] = React.useState(0)
 
   const handleNext = () => {
     if (currentIndex < children.length - 1) {
@@ -21,21 +23,28 @@ const SectionPagination: React.FC<SectionPaginationProps> = ({ children }) => {
     if (newSectionRef) {
       newSectionRef.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+
+    setProgress((currentIndex + 1) * 100 / children.length);
   }, [currentIndex]);
 
   return (
-    <div className="space-y-8">
-      {React.Children.map(children, (child, index) => (
-        <div
-          key={index}
-          ref={(el: HTMLDivElement | null) => {
-            sectionRefs.current[index] = el;
-          }}
-          className={`transition-opacity duration-500 ${index <= currentIndex ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'}`}
-        >
-          {child}
-        </div>
-      ))}
+    <div>
+      <div>
+        <Progress value={progress} />
+      </div>
+      <div>
+        {React.Children.map(children, (child, index) => (
+          <div
+            key={index}
+            ref={(el: HTMLDivElement | null) => {
+              sectionRefs.current[index] = el;
+            }}
+            className={`mt-4 transition-opacity duration-500 ${index <= currentIndex ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'}`}
+          >
+            {child}
+          </div>
+        ))}
+      </div>
       <div className="flex justify-end">
         <Button
           onClick={handleNext}
