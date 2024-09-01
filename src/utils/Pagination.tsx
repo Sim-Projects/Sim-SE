@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect, ReactNode } from 'react';
 import { Button } from "@/components/ui/button"
 import { ChevronRight } from "lucide-react"
 import { Progress } from "@/components/ui/progress"
+import { useRouter } from 'next/navigation'
 
 interface SectionPaginationProps {
   children: ReactNode[];
@@ -10,12 +11,17 @@ interface SectionPaginationProps {
 const SectionPagination: React.FC<SectionPaginationProps> = ({ children }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [progress, setProgress] = React.useState(0)
+  const [progress, setProgress] = useState(0);
+  const router = useRouter();
 
   const handleNext = () => {
     if (currentIndex < children.length - 1) {
       setCurrentIndex(prev => prev + 1);
     }
+  };
+
+  const handleFinish = () => {
+    router.back();
   };
 
   useEffect(() => {
@@ -28,9 +34,12 @@ const SectionPagination: React.FC<SectionPaginationProps> = ({ children }) => {
   }, [currentIndex]);
 
   return (
-    <div>
-      <div>
-        <Progress value={progress} />
+    <div className="relative">
+      <div className="sticky top-0 z-10 bg-background p-4 border-b bg-white">
+        <div className="mb-2 font-semibold">
+          Progress: {Math.round(progress)}%
+        </div>
+        <Progress value={progress} className="w-full h-2" />
       </div>
       <div>
         {React.Children.map(children, (child, index) => (
@@ -45,13 +54,16 @@ const SectionPagination: React.FC<SectionPaginationProps> = ({ children }) => {
           </div>
         ))}
       </div>
-      <div className="flex justify-end">
-        <Button
-          onClick={handleNext}
-          disabled={currentIndex === children.length - 1}
-        >
-          Next <ChevronRight className="ml-2 h-4 w-4" />
-        </Button>
+      <div className="flex justify-end mt-4">
+        {currentIndex === children.length - 1 ? (
+          <Button onClick={handleFinish}>
+            Finish
+          </Button>
+        ) : (
+          <Button onClick={handleNext}>
+            Continue <ChevronRight className="ml-2 h-4 w-4" />
+          </Button>
+        )}
       </div>
     </div>
   );

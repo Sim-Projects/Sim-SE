@@ -108,10 +108,9 @@ const DataShardingTopic = () => (
                     <li>Speed</li>
                 </UnorderedList>
             </Paragraph>
-            <DidYouKnow
-                heading="Did you know?"
-                text="Sharding improves scalability by distributing data across multiple databases, allowing for more efficient data management and query performance."
-            />
+            <DidYouKnow heading="Did you know?">
+                Sharding improves scalability by distributing data across multiple databases, allowing for more efficient data management and query performance.
+            </DidYouKnow>
         </section>
         <section>
             <ShardingSimulation />

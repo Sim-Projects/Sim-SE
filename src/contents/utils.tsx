@@ -126,9 +126,9 @@ export const ImageBlock = ({ src, alt }: {
   alt: string;
 }) => <Image src={src} alt={alt} width={300} height={300} />;
 
-export const DidYouKnow = ({ heading, text }: {
+export const DidYouKnow = ({ heading, children }: {
   heading: string;
-  text: string;
+  children: React.ReactNode;
 }) => (
   <div className="space-y-2 mt-5">
     <Card>
@@ -137,7 +137,7 @@ export const DidYouKnow = ({ heading, text }: {
           <Lightbulb className="h-8 w-4 inline-block" /> {heading}
         </CardTitle>
       </CardHeader>
-      <CardContent>{text}</CardContent>
+      <CardContent>{children}</CardContent>
     </Card>
   </div>
 )
