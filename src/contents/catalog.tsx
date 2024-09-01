@@ -1,7 +1,8 @@
 import { lazy } from "react"
 
 const topicsRegistry: { [key: string]: React.LazyExoticComponent<React.ComponentType<any>> } = {
-    "Data_Sharding": lazy(() => import('@/contents/topics//Data_Sharding')),
+    "Data_Sharding": lazy(() => import('@/contents/topics/Data_Sharding')),
+    "Caching": lazy(() => import('@/contents/topics/Caching/Caching'))
 };
 
 export default {
@@ -14,6 +15,15 @@ export default {
             level: "3",
             tags: ["Database", "Sharding"],
             component: topicsRegistry["Data_Sharding"]
+        },
+        {
+            id: "Caching",
+            title: "Caching: The Secret Weapon of High-Performance Software",
+            thumbnail: "/Data_Sharding.png",
+            description: "Caching description",
+            level: "1",
+            tags: ["System Design", "Caching"],
+            component: topicsRegistry["Caching"]
         }
     ]
 }
