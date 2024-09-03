@@ -22,15 +22,15 @@ interface Topic {
 export default function Home() {
   const router = useRouter();
   const [hoveredTopic, setHoveredTopic] = useState<string | null>(null);
-  const [isScrollable, setIsScrollable] = useState<{ [key: string]: boolean }>({});
-  const descriptionRefs = useRef<{ [key: string]: HTMLParagraphElement | null }>({});
+  const [isScrollable, setIsScrollable] = useState<Record<string, boolean>>({});
+  const descriptionRefs = useRef<Record<string, HTMLParagraphElement | null>>({});
 
   const handleStartTopic = (topicId: string) => {
     router.push(`/topic/${topicId}`);
   };
 
   const renderStars = (level: string) => {
-    const filledStars = parseInt(level);
+    const filledStars = parseInt(level, 10);
     return (
       <div className="flex items-center">
         {[...Array(5)].map((_, i) => (
@@ -104,7 +104,9 @@ export default function Home() {
                 </CardHeader>
                 <CardContent className="flex-grow overflow-hidden relative px-6">
                   <p 
-                    ref={el => descriptionRefs.current[topic.id] = el}
+                    ref={(el) => {
+                      descriptionRefs.current[topic.id] = el;
+                    }}
                     className={`transition-all duration-300 ${
                       hoveredTopic === topic.id ? 'overflow-y-auto max-h-[220px] pr-4 pb-20' : 'line-clamp-3'
                     }`}
