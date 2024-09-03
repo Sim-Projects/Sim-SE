@@ -1,5 +1,4 @@
 name: Vercel Deployment
-run-name: Vercel Deployment - ${GITHUB_REF##*/} - ${{ github.run_id }}
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
@@ -25,9 +24,7 @@ jobs:
         id: deploy
         run: echo "::set-output name=url::$(vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }})"
       - name: Output Deployment URL
-        run: |
-          echo "## Deployment Information"
-          echo "Deployment URL - [${{ steps.deploy.outputs.url }}](${{ steps.deploy.outputs.url }})"
+        run: echo "::notice::Deployment URL - ${{ steps.deploy.outputs.url }}"
   Deploy-Development:
     runs-on: ubuntu-latest
     if: github.ref != 'refs/heads/main'
@@ -43,6 +40,4 @@ jobs:
         id: deploy
         run: echo "::set-output name=url::$(vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }})"
       - name: Output Deployment URL
-        run: |
-          echo "## Deployment Information"
-          echo "Deployment URL - [${{ steps.deploy.outputs.url }}](${{ steps.deploy.outputs.url }})"
+        run: echo "::notice::Deployment URL - ${{ steps.deploy.outputs.url }}"
